@@ -1,12 +1,7 @@
 <mat-toolbar>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon>menu</mat-icon>
-    </button>
     <span>Contact Directory</span>
     <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      Add Contact
-    </button>
+    <button mat-raised-button (click)="openDialog()">Add Contact</button>
   </mat-toolbar>
 <table mat-table [dataSource]="dataSource">
     <ng-container matColumnDef="name">

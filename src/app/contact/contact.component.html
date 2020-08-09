@@ -1,0 +1,49 @@
+<div class="container mt-5">
+    <form class="example-form" [formGroup]="formGroup">
+        <mat-form-field class="example-full-width">
+            <mat-label>First Name</mat-label>
+            <input matInput formControlName="firstName" placeholder="John">
+            <mat-error *ngIf="formGroup.get('firstName').hasError('required')">
+              First name is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="lastName" placeholder="Doe">
+            <mat-error *ngIf="formGroup.get('lastName').hasError('required')">
+              Last name is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Phone Number</mat-label>
+            <input matInput formControlName="mobileNumber" placeholder="9999899998">
+            <mat-error *ngIf="formGroup.get('mobileNumber').hasError('required')">
+              Phone Number is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="formGroup.get('mobileNumber').hasError('minlength')">
+                Phone Number is too short
+            </mat-error>
+            <mat-error *ngIf="formGroup.get('mobileNumber').hasError('maxlength')">
+                Phone Number is too long
+            </mat-error>
+            <mat-error *ngIf="formGroup.get('mobileNumber').hasError('pattern')">
+                Invalid phone number
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="emailId" placeholder="johndoe@evolnet.com">
+          <mat-error *ngIf="formGroup.get('emailId').hasError('email') && !formGroup.get('emailId').hasError('required')">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="formGroup.get('emailId').hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+    </form>
+  <div class="bottom-btn row justify-content-center mt-5">
+      <button class="btn btn-primary" (click)="onClose()">Close</button>
+      <button class="btn btn-primary ml-3" [disabled]="!formGroup.valid" 
+      (click)="onSubmit()">Submit</button>
+  </div>    
+</div>
