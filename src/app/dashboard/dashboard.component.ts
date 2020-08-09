@@ -18,11 +18,43 @@ export class DashboardComponent implements OnInit {
   newContact;
 
   ngOnInit(): void {
-    this.service.getAllContacts().subscribe(res=>{
-      console.table(res);
-      this.contacts = res;
-      this.dataSource = this.contacts;
-    })
+    // this.service.getAllContacts().subscribe(res=>{
+    //   console.table(res);
+    //   this.contacts = res;
+    //   this.dataSource = this.contacts;
+    // })
+
+    this.contacts = [
+      {
+        "firstName" : "Dummy 1",
+        "lastName" : "Dummy",
+        "emailId" : "alpha@123.com",
+        "mobileNumber" : "8830658489",
+        "status" : "ACTIVE",
+      },
+      {
+        "firstName" : "Dummy 2",
+        "lastName" : "Dummy",
+        "emailId" : "alpha@123.com",
+        "mobileNumber" : "8830658489",
+        "status" : "ACTIVE",
+      },{
+        "firstName" : "Dummy 3",
+        "lastName" : "Dummy",
+        "emailId" : "alpha@123.com",
+        "mobileNumber" : "8830658489",
+        "status" : "ACTIVE",
+      },
+      {
+        "firstName" : "Dummy 4",
+        "lastName" : "Dummy",
+        "emailId" : "alpha@123.com",
+        "mobileNumber" : "8830658489",
+        "status" : "ACTIVE",
+      },
+    ]
+
+    this.dataSource = this.contacts;
   }
 
   openDialog() {
@@ -30,14 +62,27 @@ export class DashboardComponent implements OnInit {
     const dialogRef = this.dialog.open(ContactComponent, {
       width: '450px',
       height:'450px',
-      // data: {name: this.name, animal: this.animal}
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       this.newContact = result;
       console.log(this.newContact)
-      this.service
+      this.service.addContact(this.newContact);
+    });
+  }
+
+  openEditDialog(element) {
+
+    const dialogRef = this.dialog.open(ContactComponent, {
+      width: '450px',
+      height:'450px',
+      data: element,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.newContact = result;
+      console.log(this.newContact)
+      this.service.editContact(this.newContact);
     });
   }
 
