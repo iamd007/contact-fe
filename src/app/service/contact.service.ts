@@ -13,4 +13,16 @@ export class ContactService {
   getAllContacts() {
     return this.http.get(this.URL + "/contact/all");
   }
+
+  addContact(contact) {
+    return this.http.post(this.URL + "/contact/add", contact);
+  }
+
+  editContact(contact) {
+    return this.http.put(this.URL + "/contact/update/" + contact.id , contact);
+  }
+
+  deleteContact(id) {
+    return this.http.delete(this.URL + "/contact/remove/"+id);
+  }
 }

@@ -37,6 +37,16 @@ export class DashboardComponent implements OnInit {
       console.log('The dialog was closed');
       this.newContact = result;
       console.log(this.newContact)
+      this.service
     });
+  }
+
+  onEdit() {
+
+  }
+
+  onDelete(contact) {
+    console.log(contact);
+    this.service.deleteContact(contact.id);
   }
  }
