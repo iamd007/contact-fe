@@ -15,10 +15,12 @@ export class ContactService {
   }
 
   addContact(contact) {
+    console.log(contact)
     return this.http.post(this.URL + "/contact/add", contact);
   }
 
   editContact(contact) {
+    //String link = this.URL + "/contact/update/"+contact.id;
     return this.http.put(this.URL + "/contact/update/" + contact.id , contact);
   }
 
